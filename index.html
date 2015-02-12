@@ -28,8 +28,14 @@
 
   $.getJSON("./Maryland_Transit.json", function(data) {
     var geojson = L.geoJson(data, {
+      style: function(feature) {
+        switch (feature.properties.Route_Type) {
+          case 'MTA Bus - Local Bus': return {color: #FF0000};
+          case 'MTA Bus - Express Bus': return {color: #00FF00};
+        }
+      }
       onEachFeature: function (feature, layer) {
-        layer.bindPopup(feature.properties.name);
+        layer.bindPopup(feature.properties.Route_Name);
       }
     });
     var map = L.map('mta-map').fitBounds(geojson.getBounds());
