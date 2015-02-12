@@ -33,7 +33,7 @@
           case 'MTA Bus - Local Bus': return {color: #FF0000};
           case 'MTA Bus - Express Bus': return {color: #00FF00};
         }
-      }
+      };
       onEachFeature: function (feature, layer) {
         layer.bindPopup(feature.properties.Route_Name);
       }
